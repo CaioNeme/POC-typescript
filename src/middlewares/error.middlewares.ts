@@ -29,11 +29,6 @@ export default function errorHandler(error:any, req:Request, res:Response, next:
   if (error.type === "unauthorized") {
     return res.status(httpStatus.UNAUTHORIZED).send(error.message);
   }
-  if (!error.type && error.code === "23503") {
-    return res
-      .status(httpStatus.NOT_FOUND)
-      .send("A cidade de origem ou de destino não existe!");
-  }
 
   res
     .status(httpStatus.INTERNAL_SERVER_ERROR)
